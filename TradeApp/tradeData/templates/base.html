@@ -3,26 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Django Template</title>
+    <title>Welcome Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            animation: gradientBG 5s infinite alternate;
+        }
+
+        @keyframes gradientBG {
+            0% { background: linear-gradient(45deg, #ff7e5f, #feb47b); }
+            100% { background: linear-gradient(45deg, #6a11cb, #2575fc); }
+        }
+
+        .container {
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background: #ff7e5f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #feb47b;
+        }
+    </style>
 </head>
 <body>
-
-    <h1>Welcome in your feature branch hello, {{ user_name }}!</h1>
-
-    <h2>Item List:</h2>
-    <ul>
-        {% for item in items %}
-            <li>{{ item }}</li>
-        {% empty %}
-            <li>No items available.</li>
-        {% endfor %}
-    </ul>
-
-    {% if user_name == "Admin" %}
-        <p>You have admin privileges.</p>
-    {% else %}
-        <p>You are a regular user.</p>
-    {% endif %}
-
+    <div class="container">
+        <h1>Welcome to MK Trading App</h1>
+        <p>Discover amazing analysis of market for your trading</p>
+       <!-- <button class="btn" onclick="alert('Welcome! Enjoy your stay.')">Get Started</button> -->
+        <form action="{% url 'analysis' %}" method="get">
+            <button type="submit" class="btn">Go to Analysis</button>
+        </form>
+    </div>
 </body>
 </html>
