@@ -20,5 +20,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",include("tradeData.urls")),
-    path("contact",include("tradeData.urls"))
+    path("home/",include("tradeData.urls")),
+    path("nifty_chain/",include("tradeData.urls")),
+    path("live_pcr/",include("tradeData.urls")),
+    path("oi_change_data_display/",include("tradeData.urls"))
 ]

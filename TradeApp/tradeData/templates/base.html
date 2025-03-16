@@ -63,16 +63,49 @@
         .btn:hover {
             background: #feb47b;
         }
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background: #ff7e5f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        ui {
+
+            float: left;
+          }
     </style>
 </head>
 <body>
+   
     <div class="container">
+       
         <h1>Welcome to MK Trading App</h1>
         <p>Discover amazing analysis of market for your trading</p>
        <!-- <button class="btn" onclick="alert('Welcome! Enjoy your stay.')">Get Started</button> -->
-        <form action="{% url 'analysis' %}" method="get">
-            <button type="submit" class="btn">Go to Analysis</button>
+       <ui>
+        <form action="{% url 'home' %}" method="get">
+            <button type="submit" class="btn">Home</button>
         </form>
+    </ui>
+    <ui>
+        <form action="{% url 'live_pcr' %}" method="get">
+            <button type="submit" class="btn">Live Pcr</button>
+        </form>
+    </ui>
+    <ui>
+        <form action="{% url 'oi_change_data_display' %}" method="get">
+            <button type="submit" class="btn">IO Change</button>
+        </form>
+    </ui>
+    <ui>
+        <form action="{% url 'nifty_chain' %}" method="get">
+            <button type="submit" class="btn">Nifty Chain</button>
+        </form>
+    </ui>
     </div>
 </body>
 </html>

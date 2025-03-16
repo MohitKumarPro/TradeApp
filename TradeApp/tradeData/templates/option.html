@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Interactive Data Table</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <style> 
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background: #ff7e5f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        ui {
+
+            float: left;
+          }
+        #myTable_wrapper {
+            transform: scale(0.8); /* Adjust scale (0.8 = 80% zoom) */
+            transform-origin: top left; /* Keep the table aligned */
+        }
+    </style>
+</head>
+<body>
+    
+    <ui>
+        <form action="{% url 'home' %}" method="get">
+            <button type="submit" class="btn">Home</button>
+        </form>
+    </ui>
+    <ui>
+        <form action="{% url 'live_pcr' %}" method="get">
+            <button type="submit" class="btn">Live Pcr</button>
+        </form>
+    </ui>
+    <ui>
+        <form action="{% url 'oi_change_data_display' %}" method="get">
+            <button type="submit" class="btn">IO Change</button>
+        </form>
+    </ui>
+    <ui>
+        <form action="{% url 'nifty_chain' %}" method="get">
+            <button type="submit" class="btn">Nifty Chain</button>
+        </form>
+    </ui>
+    
+    
+    {{ table|safe }}
+    <!-- jQuery & DataTables -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#myTable").DataTable();
+        });
+    </script>
+</body>
+</html>
