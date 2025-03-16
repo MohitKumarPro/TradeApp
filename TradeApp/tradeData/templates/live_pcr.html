@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Interactive Data Table</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <style>
+        /* Flex container to arrange table & image side by side */
+        .container {
+            display: flex;
+            justify-content: space-around; /* Adjust alignment */
+            align-items: center; /* Align items vertically */
+        }
+        .table-container, .image-container {
+            flex: 1; /* Equal width */
+            padding: 10px;
+        }
+        img {
+            max-width: 100%; /* Make image responsive */
+            height: auto;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background: #ff7e5f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        ui {
+
+            float: left;
+          }
+    </style>
+</head>
+<body>
+    <ui>
+        <form action="{% url 'home' %}" method="get">
+            <button type="submit" class="btn">Home</button>
+        </form>
+    </ui>
+    <ui>
+        <form action="{% url 'live_pcr' %}" method="get">
+            <button type="submit" class="btn">Live Pcr</button>
+        </form>
+    </ui>
+    <ui>
+        <form action="{% url 'oi_change_data_display' %}" method="get">
+            <button type="submit" class="btn">IO Change</button>
+        </form>
+    </ui>
+    <ui>
+        <form action="{% url 'nifty_chain' %}" method="get">
+            <button type="submit" class="btn">Nifty Chain</button>
+        </form>
+    </ui>
+    <h2>PCR Live Data Table</h2>
+
+    <div class="container">
+        <!-- Table Section -->
+        <div class="table-container">
+            {{ table|safe }}
+        </div>
+
+        <!-- Image Section -->
+        <div class="image-container">
+            <img src="{{ fig_image }}" alt="Matplotlib Plot">
+        </div>
+    </div>
+
+    <!-- jQuery & DataTables -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#myTable").DataTable();
+        });
+    </script>
+
+</body>
+</html>
