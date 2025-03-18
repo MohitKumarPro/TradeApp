@@ -4,11 +4,7 @@ import pandas as pd
 import requests
 import time
 QueryCount = 1
-# Create your views here.
-import threading
 import time
-
-
 
 
 def home(request):
@@ -20,18 +16,12 @@ def analysis(request):
     if QueryCount == 1:
         global access_token
         access_token = get_the_acess_token()
-        #print("comes here")
+        print("comes here")
         QueryCount += 1
     #access_token = ''
     #print("print--",access_token)
     chain_data = get_nifty_option_chain(access_token)
     return chain_data
-        #cleaned_data = get_nifty_chain_clean_data(chain_data)
-        #html_table = cleaned_data.to_html(classes="table table-bordered", index=False, table_id="myTable")
-        #fig_image,pcr_html= pcr_calculation(cleaned_data,i)
-        #return render(request, 'analysis.html', {'table': html_table,'fig_image':fig_image,'pcr_html':pcr_html})
-    
-    #return render(request, "analysis.html", {"items":items})
 
 def nifty_chain(request):
     chain_data = analysis(request)
